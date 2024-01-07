@@ -1,0 +1,248 @@
+WindowManager:
+    LogInPage:
+    RegisterPage:
+    InfoPage:
+    PicturingPage:
+
+#<Screen>:
+#    on_leave: app.previous_screen = self.name
+
+<LogInPage>:
+    name: "login"
+    size_hint: .7,.7
+    pos_hint: {"center_x":.5, "center_y":.5}
+    GridLayout:
+        spacing: "5dp"
+        cols: 1
+        Image:
+            source: "OWL.png"
+        GridLayout:
+            spacing: "3dp"
+            cols: 1
+            Label:
+                text: "Sign in to your account"
+                color: 0,0,0,1
+                bold: True
+                font_size: "27dp"
+        GridLayout:
+            spacing: "5dp"
+            cols: 1
+            Label:
+                text: "User ID: "
+                color: 0,0,0,1
+                bold: True
+                font_size: "22dp"
+            TextInput:
+                multiline: False
+        GridLayout:
+            spacing: "5dp"
+            cols: 1
+            Label:
+                text: "Password: "
+                color: 0,0,0,1
+                bold: True
+                font_size: "22dp"
+            TextInput:
+                multiline: False
+
+        Button:
+            text: "Sign In"
+            color: 0,0,0,1
+            bold: True
+            font_size: "16dp"
+            background_color: "#00f9f9"
+            background_normal: ""
+            size_hint: 1,.5
+            on_press: root.login_button()
+            on_release: app.root.current = "info"
+
+        Button:
+            text: "Do not have an account? Register now!"
+            color: 0,0,0,1
+            bold: True
+            font_size: "16dp"
+            background_color: "#00f9f9"
+            background_normal: ""
+            size_hint: 1,.5
+            on_press: root.register_button()
+            on_release: app.root.current = "register"
+
+        #Label:
+        #    text: root.login_text
+        #    bold: True
+        #    font_size: "15dp"
+        #    color: 0,0,0,1
+
+<RegisterPage>:
+    name: "register"
+    size_hint: .7,.7
+    pos_hint: {"center_x":.5, "center_y":.5}
+    GridLayout:
+        spacing: "5dp"
+        cols: 1
+        Image:
+            source: "OWL.png"
+        GridLayout:
+            spacing: "3dp"
+            cols: 1
+            Label:
+                text: "Start Registration"
+                color: 0,0,0,1
+                bold: True
+                font_size: "27dp"
+        GridLayout:
+            spacing: "5dp"
+            cols: 1
+            Label:
+                text: "User ID: "
+                color: 0,0,0,1
+                bold: True
+                font_size: "22dp"
+            TextInput:
+                multiline: False
+        GridLayout:
+            spacing: "5dp"
+            cols: 1
+            Label:
+                text: "Password: "
+                color: 0,0,0,1
+                bold: True
+                font_size: "22dp"
+            TextInput:
+                multiline: False
+        GridLayout:
+            spacing: "5dp"
+            cols: 1
+            Label:
+                text: "Re-enter Password: "
+                color: 0,0,0,1
+                bold: True
+                font_size: "22dp"
+            TextInput:
+                multiline: False
+
+        Button:
+            text: "Register"
+            color: 0,0,0,1
+            bold: True
+            font_size: "16dp"
+            background_color: "#00f9f9"
+            background_normal: ""
+            size_hint: 1,.5
+            on_press: root.finishRegister_button()
+            on_release: app.root.current = "login"
+
+        Button:
+            text: "Back to Sign In"
+            color: 0,0,0,1
+            bold: True
+            font_size: "16dp"
+            background_color: "#00f9f9"
+            background_normal: ""
+            size_hint: 1,.5
+            on_press: root.backtoLogin_button()
+            on_release: app.root.current = "login"
+
+        #Label:
+        #    text: root.register_text
+        #    bold: True
+        #    font_size: "15dp"
+        #    color: 0,0,0,1
+
+<InfoPage>:
+    name: "info"
+    size_hint: .8,.8
+    pos_hint: {"center_x":.5, "center_y":.5}
+    GridLayout:
+        spacing: "5dp"
+        cols: 1
+        #rows: 15
+        Image:
+            source: "OWL.png"
+        GridLayout:
+            spacing: "3dp"
+            cols: 1
+            Label:
+                text: "About Us"
+                color: 0,0,0,1
+                bold: True
+                font_size: "27dp"
+        GridLayout:
+            spacing: "1dp"
+            cols: 1
+            Label:
+                text: "Open Weed Locator, the AI-powered application,"
+                color: 0,0,0,1
+                font_size: "18dp"
+        GridLayout:
+            spacing: "1dp"
+            cols: 1
+            Label:
+                text: "can detect and point out weeds in picture,"
+                color: 0,0,0,1
+                font_size: "18dp"
+        GridLayout:
+            spacing: "1dp"
+            cols: 1
+            Label:
+                text: "also give the total amount of weeds detected."
+                color: 0,0,0,1
+                font_size: "18dp"
+        GridLayout:
+            spacing: "1dp"
+            cols: 1
+            Label:
+                text: "Starts your journey with us by take picture now!!"
+                color: 0,0,0,1
+                font_size: "18dp"
+        Button:
+            size_hint: .15,1
+            background_color: 0,0,0,0
+            on_press: root.gotoPicturing_button()
+            on_release: app.root.current = "picturing"
+            Image:
+                source: "cameraicon3.png"
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+
+            ### used as button to start take picture ###
+            #text: "Starts Picturing"
+            #color: 0,0,0,1
+            #bold: True
+            #font_size: "16dp"
+            #background_color: "#00f9f9"
+            #background_normal: ""
+            #size_hint: 1,1.5
+            #on_press: root.gotoPicturing_button()
+            #on_release: app.root.current = "picturing"
+
+<PicturingPage>:
+    name: "picturing"
+
+    GridLayout:
+        cols: 1
+        padding: 10
+        Button:
+            text: "Back"
+            color: 0,0,0,1
+            bold: True
+            font_size: "24dp"
+            on_release: app.root.current = "info"
+
+    BoxLayout:
+        orientation: 'vertical'
+        Camera:
+            id: camera
+            resolution: (640, 480)
+            play: False
+        ToggleButton:
+            text: 'Play'
+            on_press: camera.play = not camera.play
+            size_hint_y: None
+            height: '48dp'
+        Button:
+            text: 'Capture'
+            size_hint_y: None
+            height: '48dp'
+            on_press: root.capture_image()
+            #on_press: root.capture_image() if camera.play==True else on_press: None
